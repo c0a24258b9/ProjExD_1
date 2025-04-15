@@ -16,6 +16,8 @@ def main():
     kk_rct = kk_img.get_rect() #練習１０ー１
     kk_rct.center = 300,200   #練習１０ー2
     tmr = 0
+    a=0
+    b=0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
@@ -26,15 +28,17 @@ def main():
         screen.blit(kk_img, kk_rct)  #練習４
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0,-1))
-        if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,1))
-        if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((2,0))
-        if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
+            b = -1
+        elif key_lst[pg.K_DOWN]:
+            b = 1
+        elif key_lst[pg.K_RIGHT]:
+            a = 1
+        elif key_lst[pg.K_LEFT]:
+            a = -1
         else:
-            kk_rct.move_ip((-1,0))
+            a = -1
+            b = 0
+        kk_rct.move_ip((a,b))
         pg.display.update()
         tmr += 1        
         clock.tick(200)  #練習５
